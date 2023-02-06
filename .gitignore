@@ -1,0 +1,15 @@
+.DS_Store
+_MACOSX
+
+.idea
+.vscode
+
+/logs
+*.log
+npm-gebug.log*
+
+/node_modules
+
+package-lock.json
+/package-lock.json
+/yarn.lock
