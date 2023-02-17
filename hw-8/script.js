@@ -56,7 +56,7 @@ console.log(`Дане число ${someNumber}`);
 i = 0;
 while( 3**i <= someNumber){
     (3**i === someNumber)
-        ? console.log(`Число ${someNumber} можна одержати шляхом зведення числа 3 ступінь ${i}`)
+        ? console.log(`Число ${someNumber} можна одержати шляхом зведення числа 3 у ступінь ${i}`)
         : console.log(`Число ${someNumber} не можна одержати шляхом зведення числа 3 у ступінь ${i}`);
     i++;
 }
