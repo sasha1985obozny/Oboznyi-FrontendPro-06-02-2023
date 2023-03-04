@@ -1,0 +1,100 @@
+'use strict'
+
+const shoppingCart = {
+    items: [],
+    
+    addItem(item){
+        if (this.items.length === 0){
+          console.log('Масив порожній. Додаємо перший товар');
+          this.items.push(item);
+          return this;
+        } 
+        for(let i = 0; i < this.items.length; i++){
+          if(this.items[i].name === item.name){
+            console.log(`Такий товар ${item.name} вже є в кошику. Збільшуємо значення властивості count`);
+            this.items[i].count += item.count;
+            return this;                  
+          } 
+        }
+        console.log(`Такого товару ${item.name} немає в кошику. Додаємо товар у кошик як новий елемент`);
+        this.items.push(item);
+        return this;
+    },
+
+    deleteItem(item) {
+      for (let i = 0; i < this.items.length; i++){
+        if(this.items[i].name === item && this.items[i].count === 1){
+          console.log('Такий товар тільки один. Повністю видаляємо його з кошику');
+          this.items.splice(i, 1);
+          return this;
+        } else if (this.items[i].name === item ){
+          console.log('Кількість товару більше 1. Зменшуємо властивість count на 1');
+          this.items[i].count -= 1;
+          return this;
+        }
+      }
+    },
+
+    getTotalSum(){
+      let totalSum = this.items.reduce((sum, current) => {
+        sum += current.count * current.price;
+        return sum;
+      }, 0);
+      return totalSum;
+    }
+  };
+
+  // Test cases
+
+  console.log('Кошик порожній');
+  shoppingCart.addItem({name: 'Headphone', count: 4, price: 100});
+  console.log(`Додано товар: {name: 'Headphone', count: 4, price: 100}`);
+  let resultSum = shoppingCart.getTotalSum();
+  console.log(`Загальна вартість всіх товарів складає ${resultSum}`);
+
+  shoppingCart.addItem({name: 'Headphone', count: 3, price: 100});
+  console.log(`Додано товар: {name: 'Headphone', count: 3, price: 100}`);
+  resultSum = shoppingCart.getTotalSum();
+  console.log(`Загальна вартість всіх товарів складає ${resultSum}`);
+
+  shoppingCart.addItem({name: 'Vacuum cleaner', count: 2, price: 300});
+  console.log(`Додано товар: {name: 'Vacuum cleaner', count: 2, price: 300}`);
+  resultSum = shoppingCart.getTotalSum();
+  console.log(`Загальна вартість всіх товарів складає ${resultSum}`);
+
+  shoppingCart.deleteItem('Headphone');
+  console.log(`Видалено товар: 'Headphone'`);
+  resultSum = shoppingCart.getTotalSum();
+  console.log(`Загальна вартість всіх товарів складає ${resultSum}`);
+
+  shoppingCart.addItem({name: 'Vacuum cleaner', count: 5, price: 300});
+  console.log(`Додано товар: {name: 'Vacuum cleaner', count: 5, price: 300}`);
+  resultSum = shoppingCart.getTotalSum();
+  console.log(`Загальна вартість всіх товарів складає ${resultSum}`);
+
+  shoppingCart.deleteItem('Vacuum cleaner');
+  console.log(`Видалено товар: 'Vacuum cleaner'`);
+  resultSum = shoppingCart.getTotalSum();
+  console.log(`Загальна вартість всіх товарів складає ${resultSum}`);
+
+  shoppingCart.addItem({name: 'Iron', count: 5, price: 500});
+  console.log(`Додано товар: {name: 'Iron', count: 5, price: 500}`);
+  resultSum = shoppingCart.getTotalSum();
+  console.log(`Загальна вартість всіх товарів складає ${resultSum}`);
+
+  shoppingCart.deleteItem('Vacuum cleaner');
+  console.log(`Видалено товар: 'Vacuum cleaner'`);
+  resultSum = shoppingCart.getTotalSum();
+  console.log(`Загальна вартість всіх товарів складає ${resultSum}`);
+
+  shoppingCart.addItem({name: 'Laptop', count: 1, price: 1000});
+  console.log(`Додано товар: {name: 'Laptop', count: 1, price: 1000}`);
+  resultSum = shoppingCart.getTotalSum();
+  console.log(`Загальна вартість всіх товарів складає ${resultSum}`);
+
+  shoppingCart.deleteItem('Laptop');
+  console.log(`Видалено товар: 'Laptop'`);
+  resultSum = shoppingCart.getTotalSum();
+  console.log(`Загальна вартість всіх товарів складає ${resultSum}`);
+
+  console.log(shoppingCart.items);
