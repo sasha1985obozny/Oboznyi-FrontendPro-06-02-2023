@@ -5,17 +5,18 @@ const shoppingCart = {
     
     addItem(item){
         if (this.items.length === 0){
+          console.log('Масив порожній. Додаємо перший товар');
           this.items.push(item);
           return this;
         } 
-
         for(let i = 0; i < this.items.length; i++){
           if(this.items[i].name === item.name){
+            console.log(`Такий товар ${item.name} вже є в кошику. Збільшуємо значення властивості count`);
             this.items[i].count += item.count;
             return this;                  
-              } 
+          } 
         }
-        
+        console.log(`Такого товару ${item.name} немає в кошику. Додаємо товар у кошик як новий елемент`);
         this.items.push(item);
         return this;
     },
@@ -23,9 +24,11 @@ const shoppingCart = {
     deleteItem(item) {
       for (let i = 0; i < this.items.length; i++){
         if(this.items[i].name === item && this.items[i].count === 1){
+          console.log('Такий товар тільки один. Повністю видаляємо його з кошику');
           this.items.splice(i, 1);
           return this;
         } else if (this.items[i].name === item ){
+          console.log('Кількість товару більше 1. Зменшуємо властивість count на 1');
           this.items[i].count -= 1;
           return this;
         }
