@@ -10,6 +10,3 @@ npm-gebug.log*
 
 /node_modules
 
-package-lock.json
-/package-lock.json
-/yarn.lock
