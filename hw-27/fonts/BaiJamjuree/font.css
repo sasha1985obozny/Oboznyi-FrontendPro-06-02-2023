@@ -1,0 +1,7 @@
+@font-face {
+    font-family: 'BaiJamjuree';
+    src: url('./BaiJamjuree-Regular.woff2') format('woff2'),
+        url('./BaiJamjuree-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
